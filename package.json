@@ -1,0 +1,33 @@
+{
+  "name": "@terradharitri/mcp",
+  "version": "0.0.1",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && node scripts/addShebang.js"
+  },
+  "bin": {
+    "drt-mcp": "build/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "description": "",
+  "files": [
+    "build"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "@terradharitri/sdk-core": "0.1.12",
+    "bignumber.js": "^9.1.2",
+    "dotenv": "^16.4.7",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  }
+}

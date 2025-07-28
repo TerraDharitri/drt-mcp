@@ -1,0 +1,29 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - drtNetwork
+    properties:
+      drtNetwork:
+        type: string
+        enum: ["devnet", "testnet", "mainnet"]
+        default: devnet
+        description: "The DharitrI network to interact with, e.g., 'devnet', 'mainnet'."
+      drtWallet:
+        type: string
+        description: "The absolute path to a PEM wallet. Will be used for signing transactions."
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({ command: 'node', args: ['build/index.js'],
+      env: {
+        DRT_NETWORK: config.drtNetwork,
+        DRT_WALLET: config.drtWallet
+      }})
+  exampleConfig:
+    drtNetwork: devnet
+    drtWallet: /Users/user/wallet.pem
